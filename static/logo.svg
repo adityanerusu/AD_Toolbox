@@ -1,0 +1,5 @@
+<!-- logo.svg (simple, clean, easily swappable) -->
+<svg width="40" height="40" viewBox="0 0 50 50" fill="none">
+<circle cx="25" cy="25" r="25" fill="#47E2B2"/>
+<text x="50%" y="54%" text-anchor="middle" fill="#fff" font-size="22" font-family="Verdana" dy=".3em" font-weight="bold">AD</text>
+</svg>

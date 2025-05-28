@@ -1,0 +1,116 @@
+Comp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Image Compressor – AD’s Toolbox</title>
+<link rel="stylesheet" href="static/styles.css" />
+</head>
+<body class="light">
+<header class="site-header">
+<a href="index.html" class="site-logo" aria-label="Go to home">
+<svg height="32" viewBox="0 0 40 40" fill="none"><rect x="6" y="13" width="28" height="16" rx="4" fill="#47E2B2"/><rect x="12" y="8" width="16" height="7" rx="2" fill="#2e4772"/><rect x="17" y="14" width="6" height="9" rx="1.5" fill="#fff"/><rect x="8" y="18" width="24" height="8" rx="2" fill="#B3F8E3"/><rect x="13" y="11" width="2" height="7" rx="1" fill="#FFE37C"/><rect x="25" y="11" width="2" height="7" rx="1" fill="#FFE37C"/></svg>
+<span class="logo-text">AD's Toolbox</span>
+</a>
+</header>
+<div class="background" id="background">
+<div class="float-shape shape1"></div>
+<div class="float-shape shape2"></div>
+<div class="float-shape shape3"></div>
+</div>
+<button id="darkModeBtn" class="darkmode-btn" aria-label="Toggle dark mode">
+<span class="icon sun"></span>
+<span class="icon moon"></span>
+<span class="toggle-slider"></span>
+</button>
+<main class="centered-main wide-main">
+<div class="glass-card wide-card animate-in">
+<span class="svg-icon">
+<svg width="44" height="44" fill="none" viewBox="0 0 48 48">
+<rect x="7" y="13" width="34" height="22" rx="4" fill="#d0e6ff"/>
+<circle cx="18" cy="20" r="4" fill="#47E2B2"/>
+<path d="M10 32l7-8 7 7 10-12 7 13" stroke="#47E2B2" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+</span>
+<h1 class="title">Image Compressor</h1>
+<p class="subtitle">Compress images right in your browser. No upload required.</p>
+<form id="compressForm">
+<input type="file" id="imageInput" accept="image/*" />
+<label for="qualityRange">Quality:</label>
+<input type="range" id="qualityRange" min="10" max="95" value="70" />
+<span id="qualityValue">70</span>%
+<button type="submit" class="summarize-btn">Compress</button>
+</form>
+<div id="compressedResult"></div>
+<div style="margin-top: 2.2em;">
+<a href="index.html" class="back-link strong-link">← Back to Home</a>
+</div>
+</div>
+</main>
+<footer class="footer-bar">
+<div class="footer-left">
+<span class="footer-love">with <span class="love-emoji">🩵</span> AD</span>
+</div>
+<div class="footer-center">
+<span class="footer-copyright">
+
+      © 2025 All Rights Reserved, <b>AD’s Toolbox</b>
+</span>
+</div>
+<div class="footer-socials">
+<a href="https://github.com/adityanerusu" target="_blank" aria-label="GitHub" class="social-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.7-.8 2-1.2.2-.7.5-1.2.8-1.5-2.7-.3-5.4-1.3-5.4-6a4.6 4.6 0 0 1 1.2-3.3 4.2 4.2 0 0 1 .1-3.2s1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.2 4.2 0 0 1 .1 3.2 4.6 4.6 0 0 1 1.2 3.3c0 4.7-2.7 5.7-5.4 6 .5.4.9 1.1.9 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" fill="#222"/>
+</svg>
+</a>
+<a href="https://linkedin.com/in/aditya-nerusu" target="_blank" aria-label="LinkedIn" class="social-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<rect width="24" height="24" rx="5" fill="#0077b5"/>
+<path d="M17 17h-2.5v-3.2c0-.8-.3-1.4-1.1-1.4-.6 0-.9.4-1.1.7-.1.2-.1.5-.1.8V17H10V10h2.4v.9c.3-.4.9-1 2.1-1 1.5 0 2.5 1 2.5 3V17zM7.5 8.6A1.4 1.4 0 1 1 7.5 5.8a1.4 1.4 0 0 1 0 2.8zm1.3 8.4H6.2V10h2.6v7z" fill="#fff"/>
+</svg>
+</a>
+</div>
+</footer>
+ 
+<script src="static/script.js"></script>
+</body>
+<script>
+const imageInput = document.getElementById('imageInput');
+const qualityRange = document.getElementById('qualityRange');
+const qualityValue = document.getElementById('qualityValue');
+const compressForm = document.getElementById('compressForm');
+const compressedResult = document.getElementById('compressedResult');
+qualityRange.oninput = () => qualityValue.textContent = qualityRange.value;
+compressForm.onsubmit = function(e) {
+ e.preventDefault();
+ if (!imageInput.files.length) return;
+ const file = imageInput.files[0];
+ const quality = Number(qualityRange.value) / 100;
+ const reader = new FileReader();
+ reader.onload = function(ev) {
+   const img = new Image();
+   img.onload = function() {
+     const canvas = document.createElement('canvas');
+     const maxW = 1280, maxH = 1280;
+     let {width, height} = img;
+     if (width > maxW || height > maxH) {
+       let scale = Math.min(maxW/width, maxH/height);
+       width *= scale; height *= scale;
+     }
+     canvas.width = width; canvas.height = height;
+     canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+     canvas.toBlob(function(blob) {
+       const url = URL.createObjectURL(blob);
+       compressedResult.innerHTML =
+         `<a href="${url}" download="compressed.jpg" class="summarize-btn" style="margin:1.5em 0;">Download Compressed Image</a><br>
+<img src="${url}" style="margin-top:1em;max-width:240px;border-radius:12px;box-shadow:0 2px 8px #47e2b234;">`;
+     }, 'image/jpeg', quality);
+   };
+   img.src = ev.target.result;
+ };
+ reader.readAsDataURL(file);
+};
+</script>
+</html>
+ 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Text Summarizer – AD’s Toolbox</title>
+<link rel="stylesheet" href="static/styles.css" />
+</head>
+<body class="light">
+<header class="site-header">
+<a href="index.html" class="site-logo" aria-label="Go to home">
+<svg height="32" viewBox="0 0 40 40" fill="none"><rect x="6" y="13" width="28" height="16" rx="4" fill="#47E2B2"/><rect x="12" y="8" width="16" height="7" rx="2" fill="#2e4772"/><rect x="17" y="14" width="6" height="9" rx="1.5" fill="#fff"/><rect x="8" y="18" width="24" height="8" rx="2" fill="#B3F8E3"/><rect x="13" y="11" width="2" height="7" rx="1" fill="#FFE37C"/><rect x="25" y="11" width="2" height="7" rx="1" fill="#FFE37C"/></svg>
+<span class="logo-text">AD's Toolbox</span>
+</a>
+</header>
+<div class="background" id="background">
+<div class="float-shape shape1"></div>
+<div class="float-shape shape2"></div>
+<div class="float-shape shape3"></div>
+</div>
+<button id="darkModeBtn" class="darkmode-btn" aria-label="Toggle dark mode">
+<span class="icon sun"></span>
+<span class="icon moon"></span>
+<span class="toggle-slider"></span>
+</button>
+<main class="centered-main wide-main">
+<div class="glass-card wide-card animate-in" id="summarizerCard">
+<h1 class="title animate-in" style="animation-delay: 0.1s;">Text Summarizer</h1>
+<p class="subtitle animate-in" style="animation-delay: 0.23s;">
+       Paste your text below and get a concise summary—right in your browser.
+</p>
+<form id="summarizeForm" class="animate-in" style="animation-delay: 0.36s;" autocomplete="off">
+<div class="glass-textarea">
+<textarea id="inputText" placeholder="Paste or type your text here..." rows="8" required></textarea>
+</div>
+<div class="summary-options">
+<label for="lengthRange">Summary Length:</label>
+<input type="range" id="lengthRange" min="1" max="8" value="3" />
+<span id="lengthValue">3</span> sentences
+</div>
+<button type="submit" class="summarize-btn">Summarize</button>
+</form>
+<div id="summaryResult" class="summary-result animate-in"></div>
+<div style="margin-top: 2.2em;">
+<a href="index.html" class="back-link animate-in strong-link" style="animation-delay: 0.62s;">← Back to Home</a>
+</div>
+</div>
+</main>
+<footer class="footer-bar">
+<div class="footer-left">
+<span class="footer-love">with <span class="love-emoji">🩵</span> AD</span>
+</div>
+<div class="footer-center">
+<span class="footer-copyright">
+
+      © 2025 All Rights Reserved, <b>AD’s Toolbox</b>
+</span>
+</div>
+<div class="footer-socials">
+<a href="https://github.com/adityanerusu" target="_blank" aria-label="GitHub" class="social-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.7-.8 2-1.2.2-.7.5-1.2.8-1.5-2.7-.3-5.4-1.3-5.4-6a4.6 4.6 0 0 1 1.2-3.3 4.2 4.2 0 0 1 .1-3.2s1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.2 4.2 0 0 1 .1 3.2 4.6 4.6 0 0 1 1.2 3.3c0 4.7-2.7 5.7-5.4 6 .5.4.9 1.1.9 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" fill="#222"/>
+</svg>
+</a>
+<a href="https://linkedin.com/in/aditya-nerusu" target="_blank" aria-label="LinkedIn" class="social-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<rect width="24" height="24" rx="5" fill="#0077b5"/>
+<path d="M17 17h-2.5v-3.2c0-.8-.3-1.4-1.1-1.4-.6 0-.9.4-1.1.7-.1.2-.1.5-.1.8V17H10V10h2.4v.9c.3-.4.9-1 2.1-1 1.5 0 2.5 1 2.5 3V17zM7.5 8.6A1.4 1.4 0 1 1 7.5 5.8a1.4 1.4 0 0 1 0 2.8zm1.3 8.4H6.2V10h2.6v7z" fill="#fff"/>
+</svg>
+</a>
+</div>
+</footer>
+ 
+<script src="static/script.js"></script>
+</body>
+</html>
